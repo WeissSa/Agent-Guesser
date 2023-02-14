@@ -9,7 +9,7 @@ Initially I tried using the absolute best players (n=~250) as a sample size, but
 ### Main Limitations
 1. Not all agents receive equal play. This means it is harder to correlate data with lesser played agents
 2. A normal player might have very different stats from a pro
-3. Some agents have similar roles, so differentiating between them from stats is inherently challenging
+3. Some agents have similar roles, so differentiating between them from stats is inherently challenging. To remedy this, on the frontend I display the agent and the role as guesses.
 
 # File Structure
 There are 3 main folders for this project:
