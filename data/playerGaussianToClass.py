@@ -8,7 +8,7 @@ from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import time
 from sklearn import metrics
-from agentMap import AGENT_MAP
+from agentMap import AGENT_MAP_TO_CLASS
 
 TARGET_FIELDS = ["ACS", "KD", "ADR", "KPR", "APR", "FKPR"]
 
@@ -27,7 +27,7 @@ for field in TARGET_FIELDS[1:]:
 # pick the most used agent for each player
 agents = [agent.strip().strip("[").strip("]").split(",")[0] for agent in player_df["agents"]]
 for index, agent in enumerate(agents):
-    agents[index] = AGENT_MAP[agent.strip("'")]
+    agents[index] = AGENT_MAP_TO_CLASS[agent.strip("'")]
 
 agents = pd.DataFrame(agents)
 
@@ -58,5 +58,5 @@ print("accuracy:   %0.2f" % accuracy)
 t1 = time.time() - t0 #to calculate model training time
 print(t1, " seconds")
 
-# accuracy is 0.46 with training time of 0.01543
+# accuracy is 0.62 with training time of 0.0104
 # with limited fields, and how some agents are bound to have similar stats, I feel this is pretty good
