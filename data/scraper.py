@@ -1,21 +1,30 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+from agentMap import AGENT_MAP
 
 UNUSED_COL_INDEX = [3, 8, 9, 10]
+URLS = [
+    "https://www.vlr.gg/stats/?event_group_id=14&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
+    "https://www.vlr.gg/stats/?event_group_id=32&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
+    "https://www.vlr.gg/stats/?event_group_id=21&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
+    "https://www.vlr.gg/stats/?event_group_id=17&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
+    "https://www.vlr.gg/stats/?event_group_id=15&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
+]
 
 def main():
-    URL = "https://www.vlr.gg/stats/?event_group_id=14&event_id=all&region=all&country=all&min_rounds=100&min_rating=1900&agent=all&map_id=all&timespan=all"
+    rows = []
+    for URL in URLS:
+        for agent in AGENT_MAP.keys():
+            page = requests.get(URL.replace("{agent}", agent))
 
-    page = requests.get(URL)
+            parsed_page = BeautifulSoup(page.content, "html.parser")
 
-    parsed_page = BeautifulSoup(page.content, "html.parser")
+            # get the entire table of players
+            player_table = parsed_page.find(class_="wf-table mod-stats mod-scroll")
 
-    # get the entire table of players
-    player_table = parsed_page.find(class_="wf-table mod-stats mod-scroll")
-
-    # find the rows by finding each player and taking the parent
-    rows = [player.parent for player in player_table.find_all(class_="mod-player mod-a")]
+            # find the rows by finding each player and taking the parent
+            rows += [player.parent for player in player_table.find_all(class_="mod-player mod-a")]
     
     # create column arrays
     name = []
