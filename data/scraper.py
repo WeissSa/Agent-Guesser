@@ -54,13 +54,13 @@ def main():
         "ACS": ACS, 
         "KD": KD, 
         "ADR": ADR,
-        "KRP": KPR,
+        "KPR": KPR,
         "APR": APR,
         "FKPR": FKPR
     }
 
     dataframe = pd.DataFrame(data=data)
-    dataframe.to_excel('player_data.xlsx', sheet_name='data')
+    dataframe.to_csv("player_data.csv", index=False)
 
 def format_agent_url(url: str) -> str:
     """
