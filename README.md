@@ -3,13 +3,14 @@ The stats of Valorant pro players might be able to be used to guess the agent of
 
 ### Process
 Initially I tried using the absolute best players (n=~250) as a sample size, but this was not enough to train my model. So I re-ran my scraper to allow for any pro play in VCT2022. However, this results in a decrease of quality of results. So I decided to instead take the results from multiple circuits (linked in Resources) with the following parameters:
-1. At least 500 rating
-2. At least 50 rounds played
+1. At least 500 opponent rating
+2. At least 100 rounds played
 
 ### Main Limitations
 1. Not all agents receive equal play. This means it is harder to correlate data with lesser played agents
 2. A normal player might have very different stats from a pro
 3. Some agents have similar roles, so differentiating between them from stats is inherently challenging. To remedy this, on the frontend I display the agent and the role as guesses.
+4. A constantly changing meta means this might not be as accurate on modern data
 
 # File Structure
 There are 3 main folders for this project:
