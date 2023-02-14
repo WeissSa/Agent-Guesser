@@ -6,10 +6,9 @@ Initially I tried using the absolute best players (n=~250) as a sample size, but
 1. At least 500 rating
 2. At least 50 rounds played
 
-### Limitations
+### Main Limitations
 1. Not all agents receive equal play. This means it is harder to correlate data with lesser played agents
-2. Harbor is too new of an agent to be anybody's most played agent
-3. A normal player might have very different stats from a pro
+2. A normal player might have very different stats from a pro
 
 # File Structure
 There are 3 main folders for this project:
