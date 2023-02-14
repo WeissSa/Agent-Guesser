@@ -22,6 +22,13 @@ The first two are fairly self-explanatary, but the third is where I did web-scra
 
 ## Resources
 
-I scraped my dataset from [vlr.gg](https://www.vlr.gg/stats/?event_group_id=14&event_id=all&region=all&country=all&min_rounds=50&min_rating=500&agent=all&map_id=all&timespan=all) where I took a sample of the top players in 2022. 
+I scraped my dataset from [vlr.gg](https://www.vlr.gg/stats/) where I took a sample of the top players in 2022. 
+
+Specific links were taken from:
+1. [VCT 2022](https://www.vlr.gg/stats/?event_group_id=14&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
+2. [VCT 2022 Offseason](https://www.vlr.gg/stats/?event_group_id=32&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
+3. [Knights Gauntlet Circuit 2022](https://www.vlr.gg/stats/?event_group_id=21&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
+4. [VCT Game Changers 2022](https://www.vlr.gg/stats/?event_group_id=17&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
+5. [VRL 2022](https://www.vlr.gg/stats/?event_group_id=15&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
 
 I also want to credit [tkomarlu](https://github.com/tkomarlu) for helping me plan out the project/learn how to apply scikit-learn to the idea.
