@@ -9,6 +9,8 @@ Initially I tried using the absolute best players (n=~250) as a sample size, but
 ### Main Limitations
 1. Not all agents receive equal play. This means it is harder to correlate data with lesser played agents
 2. A normal player might have very different stats from a pro
+3. Many pros play multiple agents, but I only measured their most played
+4. Some agents have similar roles, so differentiating between them from stats is inherently challenging
 
 # File Structure
 There are 3 main folders for this project:
