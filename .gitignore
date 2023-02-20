@@ -1,7 +1,7 @@
 data/__pycache__
 data/player_data.csv
 
-HELP.md
+backend/Agent-Guesser/HELP.md
 backend/Agent-Guesser/target/
 backend/Agent-Guesser/!.mvn/wrapper/maven-wrapper.jar
 backend/Agent-Guesser/!**/src/main/**/target/
