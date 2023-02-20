@@ -1,2 +1,36 @@
 data/__pycache__
 data/player_data.csv
+
+HELP.md
+backend/Agent-Guesser/target/
+backend/Agent-Guesser/!.mvn/wrapper/maven-wrapper.jar
+backend/Agent-Guesser/!**/src/main/**/target/
+backend/Agent-Guesser/!**/src/test/**/target/
+
+### STS ###
+backend/Agent-Guesser/.apt_generated
+backend/Agent-Guesser/.classpath
+backend/Agent-Guesser/.factorypath
+backend/Agent-Guesser/.project
+backend/Agent-Guesser/.settings
+backend/Agent-Guesser/.springBeans
+backend/Agent-Guesser/.sts4-cache
+
+### IntelliJ IDEA ###
+backend/Agent-Guesser/.idea
+backend/Agent-Guesser/*.iws
+backend/Agent-Guesser/*.iml
+backend/Agent-Guesser/*.ipr
+
+### NetBeans ###
+backend/Agent-Guesser//nbproject/private/
+backend/Agent-Guesser//nbbuild/
+backend/Agent-Guesser//dist/
+backend/Agent-Guesser//nbdist/
+backend/Agent-Guesser//.nb-gradle/
+backend/Agent-Guesser/build/
+backend/Agent-Guesser/!**/src/main/**/build/
+backend/Agent-Guesser/!**/src/test/**/build/
+
+### VS Code ###
+backend/Agent-Guesser/.vscode/
