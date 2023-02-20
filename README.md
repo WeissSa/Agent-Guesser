@@ -45,7 +45,7 @@ There are 3 main folders for this project:
 
 The first two are fairly self-explanatary, but the third is where I did web-scraping and machine-learning focused work.
 
-## Resources
+# Resources
 
 I scraped my dataset from [vlr.gg](https://www.vlr.gg/stats/) where I took a sample of the top players in 2022. 
 
