@@ -27,7 +27,7 @@ backend/Agent-Guesser//nbproject/private/
 backend/Agent-Guesser//nbbuild/
 backend/Agent-Guesser//dist/
 backend/Agent-Guesser//nbdist/
-backend/Agent-Guesser//.nb-gradle/
+backend/Agent-Guesser/.nb-gradle/
 backend/Agent-Guesser/build/
 backend/Agent-Guesser/!**/src/main/**/build/
 backend/Agent-Guesser/!**/src/test/**/build/
