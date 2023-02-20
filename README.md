@@ -1,5 +1,5 @@
 # Idea
-The stats of Valorant pro players might be able to be used to guess the agent of a generic player. I want to make a web app using React and Spring Boot with a machine learning algorithm powered by scikit-learn and the gaussian naive bayes categorization algorithm.
+The stats of Valorant pro players might be able to be used to guess the agent of a generic player. I made a web app using React and Spring Boot with a machine learning algorithm powered by scikit-learn and the gaussian naive bayes categorization algorithm.
 
 ### Process
 Initially I tried using the absolute best players (n=~250) as a sample size, but this was not enough to train my model. So I re-ran my scraper to allow for any pro play in VCT2022. However, this results in a decrease of quality of results. So I decided to instead take the results from multiple circuits (linked in Resources) with the following parameters:
