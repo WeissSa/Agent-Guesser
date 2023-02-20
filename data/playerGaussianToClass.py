@@ -47,7 +47,7 @@ X_train = pca.fit_transform(X_train)
 X_test = pca.transform(X_test)
 
 #using GaussianNB classifier
-model = GaussianNB().fit(X_train, y_train)
+model = GaussianNB().fit(X_train, y_train.values.ravel())
 
 test_results = model.predict(X_test)
 accuracy = metrics.accuracy_score(y_test, test_results)

@@ -1,3 +1,5 @@
+# This is the only model we export. To see a non-exported version of the ccode see the ToClass and ToRole versions
+
 import os
 
 import pandas as pd
@@ -9,6 +11,8 @@ from sklearn.preprocessing import StandardScaler
 import time
 from sklearn import metrics
 from agentMap import AGENT_MAP
+
+from sklearn2pmml import PMMLPipeline, sklearn2pmml
 
 TARGET_FIELDS = ["ACS", "KD", "ADR", "KPR", "APR", "FKPR"]
 
@@ -36,27 +40,33 @@ X_train, X_test, y_train, y_test = train_test_split(data, agents, test_size=0.2,
 t0= time.time() #to start timer on model training time
 
 
-# Scale fields
+# Scale fields while retaining names
 sc = StandardScaler()
-X_train = sc.fit_transform(X_train)
-X_test = sc.transform(X_test)
+X_train = pd.DataFrame(sc.fit_transform(X_train), columns = X_train.columns)
+X_test = pd.DataFrame(sc.transform(X_test), columns = X_test.columns)
 
-# Flatten array
+# Flatten array while retaining names
 pca = PCA()
-X_train = pca.fit_transform(X_train)
-X_test = pca.transform(X_test)
+X_train = pd.DataFrame(pca.fit_transform(X_train), columns = X_train.columns)
+X_test = pd.DataFrame(pca.transform(X_test), columns = X_test.columns)
 
 #using GaussianNB classifier
-model = GaussianNB().fit(X_train, y_train)
+pipeline = PMMLPipeline([("classifier", GaussianNB())])
+
+y_train = pd.DataFrame(y_train.values.ravel(), columns = y_train.columns)
+model = pipeline.fit(X_train, y_train)
+# model = GaussianNB().fit(X_train, y_train.values.ravel())
 
 test_results = model.predict(X_test)
 accuracy = metrics.accuracy_score(y_test, test_results)
 
+# export pmml
+sklearn2pmml(pipeline, "model.pmml", with_repr=True)
 
 print("accuracy:   %0.2f" % accuracy)
 
 t1 = time.time() - t0 #to calculate model training time
 print(t1, " seconds")
 
-# accuracy is 0.46 with training time of 0.01543
+# accuracy is 0.46 with training time of 0.0143
 # with limited fields, and how some agents are bound to have similar stats, I feel this is pretty good
