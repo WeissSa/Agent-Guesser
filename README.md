@@ -1,5 +1,5 @@
 # Idea
-The stats of Valorant pro players might be able to be used to guess the agent of a generic player. I want to make a web app using React and Spring Boot with a machine learning algorithm powered by scikit-learn.
+The stats of Valorant pro players might be able to be used to guess the agent of a generic player. I want to make a web app using React and Spring Boot with a machine learning algorithm powered by scikit-learn and the gaussian naive bayes categorization algorithm.
 
 ### Process
 Initially I tried using the absolute best players (n=~250) as a sample size, but this was not enough to train my model. So I re-ran my scraper to allow for any pro play in VCT2022. However, this results in a decrease of quality of results. So I decided to instead take the results from multiple circuits (linked in Resources) with the following parameters:
@@ -11,6 +11,31 @@ Initially I tried using the absolute best players (n=~250) as a sample size, but
 2. A normal player might have very different stats from a pro
 3. Some agents have similar roles, so differentiating between them from stats is inherently challenging. To remedy this, on the frontend I display the agent and the role as guesses.
 4. A constantly changing meta means this might not be as accurate on modern data
+
+### Findings
+I made three different models. The model used in the API is the agent guessing model. This model has an accuracy of ~46%. Considering there are 20 agents and some of those agents are bound to have similar stats, I would characterize this as extremely successul, especially given the restrictions on the size of the data.)
+
+However, I wondered how accurate it was accounting for agent similarity, so I made 2 other models.
+
+The first of these tries to categorize by the agent class (Duelist/Initiator/Controller/Sentinel). This is the riot-sanctioned categories that I could categorize into. With this in mind, my accuracy was ~61%. This is a great improvement, but I knew I could do better.
+
+There are some agents which when played in pro-play, fit better into other classes. Therefore, I made my own 4 roles (Star Player/Assistant to the Star Player/Smokes Specialist/Area Denier). This moved the following agents from their default role:
+1. Chamber from Area Denier to Star Player
+2. Viper from Smokes Specialist to Area Denier
+3. Sage from Area Denier to Assistant to the Star Player
+
+| Star Player | Assistant to the Star Player | Smokes Specialist | Area Denier |
+|:-----------:|:----------------------------:|:-----------------:|:-----------:|
+|   Chamber   |            Breach            |       Astra       |    Cypher   |
+|     Jett    |             Fade             |     Brimstone     |   Killjoy   |
+|   Phoenix   |             Kayo             |       Harbor      |    Viper    |
+|     Raze    |             Sage             |        Omen       |             |
+|    Reyna    |             Skye             |                   |             |
+|     Yoru    |             Sova             |                   |             |
+
+When categorizing like this, I achieved a ~68% success rate.
+
+In the end, I send the agent guess to the frontend and then manually categorize, but I am very happy with the accuracy of my results given the variety and similarity of agents.
 
 # File Structure
 There are 3 main folders for this project:
