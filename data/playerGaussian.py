@@ -40,20 +40,9 @@ X_train, X_test, y_train, y_test = train_test_split(data, agents, test_size=0.2,
 t0= time.time() #to start timer on model training time
 
 
-# Scale fields while retaining names
-sc = StandardScaler()
-X_train = pd.DataFrame(sc.fit_transform(X_train), columns = X_train.columns)
-X_test = pd.DataFrame(sc.transform(X_test), columns = X_test.columns)
-
-# Flatten array while retaining names
-pca = PCA()
-X_train = pd.DataFrame(pca.fit_transform(X_train), columns = X_train.columns)
-X_test = pd.DataFrame(pca.transform(X_test), columns = X_test.columns)
-
 #using GaussianNB classifier
-pipeline = PMMLPipeline([("classifier", GaussianNB())])
+pipeline = PMMLPipeline([("sc", StandardScaler()),("pca", PCA()),("classifier", GaussianNB())])
 
-y_train = pd.DataFrame(y_train.values.ravel(), columns = y_train.columns)
 model = pipeline.fit(X_train, y_train)
 # model = GaussianNB().fit(X_train, y_train.values.ravel())
 

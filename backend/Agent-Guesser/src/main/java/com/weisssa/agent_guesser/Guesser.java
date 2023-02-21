@@ -10,7 +10,7 @@ public interface Guesser {
     }
 
     /**
-     * Return a string which represents the outcome guessed
+     * Return the agent guess
      * **/
     public String makeGuess(Stats stats) throws MissingFieldException;
 }

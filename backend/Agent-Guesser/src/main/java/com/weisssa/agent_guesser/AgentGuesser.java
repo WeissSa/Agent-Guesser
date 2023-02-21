@@ -6,6 +6,9 @@ public class AgentGuesser implements Guesser{
         if (stats.isImpossible()){
             throw new MissingFieldException("Stats are impossible or a field is missing");
         }
-        return "Kayo";
+
+        AgentPredictorModel predictor = new AgentPredictorModel();
+
+        return predictor.makePrediction(stats);
     }
 }

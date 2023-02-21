@@ -21,7 +21,7 @@ public class GuessController {
     @PostMapping("/api/v1/guess")
     public Map guessAgentResponse(@RequestBody Stats stats){
         try {
-            String agent = agentGuesser.makeGuess(stats);
+            String agent= agentGuesser.makeGuess(stats);
             return new HashMap<String, String>() {{
                 put("Agent", agent);
             }};

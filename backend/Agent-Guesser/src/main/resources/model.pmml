@@ -2,10 +2,12 @@
 <PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
 	<Header>
 		<Application name="SkLearn2PMML package" version="0.90.4"/>
-		<Timestamp>2023-02-20T01:07:46Z</Timestamp>
+		<Timestamp>2023-02-21T19:46:31Z</Timestamp>
 	</Header>
 	<MiningBuildTask>
-		<Extension name="repr">PMMLPipeline(steps=[('classifier', GaussianNB())])</Extension>
+		<Extension name="repr">PMMLPipeline(steps=[('sc', StandardScaler()),
+       ('pca', PCA()),
+       ('classifier', GaussianNB())])</Extension>
 	</MiningBuildTask>
 	<DataDictionary>
 		<DataField name="0" optype="categorical" dataType="integer">
@@ -69,8 +71,340 @@
 			<OutputField name="probability(18)" optype="continuous" dataType="double" feature="probability" value="18"/>
 			<OutputField name="probability(19)" optype="continuous" dataType="double" feature="probability" value="19"/>
 		</Output>
+		<LocalTransformations>
+			<DerivedField name="standardScaler(ACS)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="ACS"/>
+						<Constant dataType="double">204.018254625794</Constant>
+					</Apply>
+					<Constant dataType="double">32.31211073637954</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standardScaler(KD)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="KD"/>
+						<Constant dataType="double">1.0301049433858052</Constant>
+					</Apply>
+					<Constant dataType="double">0.20287743685088577</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standardScaler(ADR)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="ADR"/>
+						<Constant dataType="double">133.74424192212098</Constant>
+					</Apply>
+					<Constant dataType="double">19.74144200843086</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standardScaler(KPR)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="KPR"/>
+						<Constant dataType="double">0.7133057166528584</Constant>
+					</Apply>
+					<Constant dataType="double">0.11661528505776556</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standardScaler(APR)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="APR"/>
+						<Constant dataType="double">0.27126898646782655</Constant>
+					</Apply>
+					<Constant dataType="double">0.10517120746497625</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="standardScaler(FKPR)" optype="continuous" dataType="double">
+				<Apply function="/">
+					<Apply function="-">
+						<FieldRef field="FKPR"/>
+						<Constant dataType="double">0.100901684617509</Constant>
+					</Apply>
+					<Constant dataType="double">0.055312888220994214</Constant>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" optype="continuous" dataType="double">
+				<Apply function="sum">
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ACS)"/>
+							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.47022266657052847</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KD)"/>
+							<Constant dataType="double">-6.451005920495248E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.40730308596636156</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ADR)"/>
+							<Constant dataType="double">-8.310269223816693E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.4574559056688421</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KPR)"/>
+							<Constant dataType="double">-2.658893694987395E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.4724238694925471</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(APR)"/>
+							<Constant dataType="double">2.300777016511233E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.21285551803211944</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(FKPR)"/>
+							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.36774604056501525</Constant>
+					</Apply>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" optype="continuous" dataType="double">
+				<Apply function="sum">
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ACS)"/>
+							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.13868036847307477</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KD)"/>
+							<Constant dataType="double">-6.451005920495248E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.3388867677767299</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ADR)"/>
+							<Constant dataType="double">-8.310269223816693E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.14500080881594546</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KPR)"/>
+							<Constant dataType="double">-2.658893694987395E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.12118574258303708</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(APR)"/>
+							<Constant dataType="double">2.300777016511233E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.8080657457945171</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(FKPR)"/>
+							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.4210012419659629</Constant>
+					</Apply>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" optype="continuous" dataType="double">
+				<Apply function="sum">
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ACS)"/>
+							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.1289451013079887</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KD)"/>
+							<Constant dataType="double">-6.451005920495248E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.4625658509307669</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ADR)"/>
+							<Constant dataType="double">-8.310269223816693E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.07037978959893268</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KPR)"/>
+							<Constant dataType="double">-2.658893694987395E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.09357411019119635</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(APR)"/>
+							<Constant dataType="double">2.300777016511233E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.531613977860991</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(FKPR)"/>
+							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.6878103983381744</Constant>
+					</Apply>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" optype="continuous" dataType="double">
+				<Apply function="sum">
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ACS)"/>
+							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.27922706643667794</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KD)"/>
+							<Constant dataType="double">-6.451005920495248E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.6191500254823639</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ADR)"/>
+							<Constant dataType="double">-8.310269223816693E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.5764729622299896</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KPR)"/>
+							<Constant dataType="double">-2.658893694987395E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.014200708281014052</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(APR)"/>
+							<Constant dataType="double">2.300777016511233E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.11800660942054311</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(FKPR)"/>
+							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.43844862315842903</Constant>
+					</Apply>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" optype="continuous" dataType="double">
+				<Apply function="sum">
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ACS)"/>
+							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.21475821753662153</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KD)"/>
+							<Constant dataType="double">-6.451005920495248E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.3387417284676838</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ADR)"/>
+							<Constant dataType="double">-8.310269223816693E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.5463476949757042</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KPR)"/>
+							<Constant dataType="double">-2.658893694987395E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.722625080854907</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(APR)"/>
+							<Constant dataType="double">2.300777016511233E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.025345119689105515</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(FKPR)"/>
+							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.13344573060738318</Constant>
+					</Apply>
+				</Apply>
+			</DerivedField>
+			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" optype="continuous" dataType="double">
+				<Apply function="sum">
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ACS)"/>
+							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.7867291233085288</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KD)"/>
+							<Constant dataType="double">-6.451005920495248E-16</Constant>
+						</Apply>
+						<Constant dataType="double">-0.08485325969418672</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(ADR)"/>
+							<Constant dataType="double">-8.310269223816693E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.3659763175943864</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(KPR)"/>
+							<Constant dataType="double">-2.658893694987395E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.4806089071521348</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(APR)"/>
+							<Constant dataType="double">2.300777016511233E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.0673863673205148</Constant>
+					</Apply>
+					<Apply function="*">
+						<Apply function="-">
+							<FieldRef field="standardScaler(FKPR)"/>
+							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+						</Apply>
+						<Constant dataType="double">0.06627745984037597</Constant>
+					</Apply>
+				</Apply>
+			</DerivedField>
+		</LocalTransformations>
 		<BayesInputs>
-			<BayesInput fieldName="ACS">
+			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]">
 				<TargetValueStats>
 					<TargetValueStat value="0">
 						<GaussianDistribution mean="-0.9430617600958026" variance="2.4732705755979425"/>
@@ -134,7 +468,7 @@
 					</TargetValueStat>
 				</TargetValueStats>
 			</BayesInput>
-			<BayesInput fieldName="KD">
+			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]">
 				<TargetValueStats>
 					<TargetValueStat value="0">
 						<GaussianDistribution mean="1.208279230512757" variance="0.7109691118715785"/>
@@ -198,7 +532,7 @@
 					</TargetValueStat>
 				</TargetValueStats>
 			</BayesInput>
-			<BayesInput fieldName="ADR">
+			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]">
 				<TargetValueStats>
 					<TargetValueStat value="0">
 						<GaussianDistribution mean="-0.7954810099888165" variance="0.24789404380746338"/>
@@ -262,7 +596,7 @@
 					</TargetValueStat>
 				</TargetValueStats>
 			</BayesInput>
-			<BayesInput fieldName="KPR">
+			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]">
 				<TargetValueStats>
 					<TargetValueStat value="0">
 						<GaussianDistribution mean="0.006257441617679471" variance="0.11443997075568549"/>
@@ -326,7 +660,7 @@
 					</TargetValueStat>
 				</TargetValueStats>
 			</BayesInput>
-			<BayesInput fieldName="APR">
+			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]">
 				<TargetValueStats>
 					<TargetValueStat value="0">
 						<GaussianDistribution mean="-0.06815595672048456" variance="0.02749336116954457"/>
@@ -390,7 +724,7 @@
 					</TargetValueStat>
 				</TargetValueStats>
 			</BayesInput>
-			<BayesInput fieldName="FKPR">
+			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]">
 				<TargetValueStats>
 					<TargetValueStat value="0">
 						<GaussianDistribution mean="0.00954991860560875" variance="0.013286969153716688"/>

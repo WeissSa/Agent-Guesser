@@ -1,12 +1,25 @@
 package com.weisssa.agent_guesser;
 
+import java.util.Map;
+
 public class Stats {
-    private float acs = -1;
-    private float kd = -1;
-    private float adr = -1;
-    private float kpr = -1;
-    private float apr = -1;
-    private float fkpr = -1;
+    private double acs = -1;
+    private double kd = -1;
+    private double adr = -1;
+    private double kpr = -1;
+    private double apr = -1;
+    private double fkpr = -1;
+
+    public Map<String, Double> getMap(){
+        return Map.of(
+                "ACS", acs,
+                "KD", kd,
+                "ADR", adr,
+                "KPR", kpr,
+                "APR", apr,
+                "FKPR", fkpr
+        );
+    }
 
     public boolean isImpossible(){
         return acs < 0 || kd < 0 ||
@@ -14,51 +27,51 @@ public class Stats {
                 apr < 0 || fkpr < 0;
     }
 
-    public float getAcs() {
+    public double getAcs() {
         return acs;
     }
 
-    public void setAcs(float acs) {
+    public void setAcs(double acs) {
         this.acs = acs;
     }
 
-    public float getKd() {
+    public double getKd() {
         return kd;
     }
 
-    public void setKd(float kd) {
+    public void setKd(double kd) {
         this.kd = kd;
     }
 
-    public float getAdr() {
+    public double getAdr() {
         return adr;
     }
 
-    public void setAdr(float adr) {
+    public void setAdr(double adr) {
         this.adr = adr;
     }
 
-    public float getKpr() {
+    public double getKpr() {
         return kpr;
     }
 
-    public void setKpr(float kpr) {
+    public void setKpr(double kpr) {
         this.kpr = kpr;
     }
 
-    public float getApr() {
+    public double getApr() {
         return apr;
     }
 
-    public void setApr(float apr) {
+    public void setApr(double apr) {
         this.apr = apr;
     }
 
-    public float getFkpr() {
+    public double getFkpr() {
         return fkpr;
     }
 
-    public void setFkpr(float fkpr) {
+    public void setFkpr(double fkpr) {
         this.fkpr = fkpr;
     }
 }
