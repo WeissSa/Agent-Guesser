@@ -2,12 +2,14 @@ package com.weisssa.api;
 
 import com.weisssa.agent_guesser.Guesser;
 import com.weisssa.agent_guesser.Stats;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.HashMap;
 import java.util.Map;
+
 
 @RestController
 public class GuessController {
@@ -19,8 +21,10 @@ public class GuessController {
 
     // Using a POST request simplifies process and allows us to use the body
     @PostMapping("/api/v1/guess")
+    @CrossOrigin(origins = "http://localhost:3000")
     public Map guessAgentResponse(@RequestBody Stats stats){
         try {
+            System.out.println(stats.getMap());
             String agent= agentGuesser.makeGuess(stats);
             return new HashMap<String, String>() {{
                 put("Agent", agent);
