@@ -25,7 +25,7 @@ export default function BaseForm(props) {
       <h3 className='text-3xl'> Enter your stats</h3>
       <form className='flex-col flex justify-center gap-y-10'>
         <div className='flex flex-col sm:flex-row gap-y-3 gap-x-5'>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-[16rem]'>
             <label htmlFor="ACS">Average Combat Score (ACS)</label>
             <input
               type="number" id="ACS" name="ACS" defaultValue={200}
@@ -33,7 +33,7 @@ export default function BaseForm(props) {
               onChange={e => setACS(e.target.value)}  
             />
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-[16rem]'>
             <label htmlFor="KD">Kill/Death Ratio (KD)</label>
             <input
               type="number" id="KD" name="KD" defaultValue={1}
@@ -41,7 +41,7 @@ export default function BaseForm(props) {
               onChange={e => setKD(e.target.value)}  
             />
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-[16rem]'>
             <label htmlFor="ADR">Average Damage Per Round (ADR)</label>
             <input
               type="number" id="ADR" name="ADR" defaultValue={100}
@@ -50,8 +50,8 @@ export default function BaseForm(props) {
             />
           </div>
         </div>
-        <div className='flex flex-col sm:flex-row gap-y-3 gap-x-5'>
-          <div className='flex flex-col'>
+        <div className='flex flex-col sm:flex-row gap-y-3 gap-x-5 '>
+          <div className='flex flex-col w-[16rem]'>
             <label htmlFor="KPR">Kills Per Round (KPR)</label>
             <input
               type="number" id="KPR" name="KPR" defaultValue={0.5}
@@ -59,7 +59,7 @@ export default function BaseForm(props) {
               onChange={e => setKPR(e.target.value)} 
             />
           </div>
-          <div className='flex flex-col'>
+          <div className='flex flex-col w-[16rem]'>
             <label htmlFor="APR">Assists Per Round (APR)</label>
             <input
               type="number" id="APR" name="APR" defaultValue={0.5}
@@ -67,7 +67,7 @@ export default function BaseForm(props) {
               onChange={e => setAPR(e.target.value)} 
             />
           </div>
-          <div className='flex flex-col w-[15.5rem]'>
+          <div className='flex flex-col w-[16rem]'>
             <label htmlFor="FKPR">First Kills Per Round (FKPR)</label>
             <input
               type="number" id="FKPR" name="FKPR" defaultValue={0.5}
