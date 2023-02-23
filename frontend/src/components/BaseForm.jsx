@@ -13,9 +13,11 @@ export default function BaseForm(props) {
 
   const submit = async(e) => {
     e.preventDefault();
+    props.setPageState("loading");
     const response = await AgentAPI.getAgent({acs, kd, adr, kpr, apr, fkpr});
-    console.log(response.data.Agent);
+    console.log({acs, kd, adr, kpr, apr, fkpr})
     props.setAgent(response.data.Agent);
+    props.setPageState("guess");
   }
 
   return (
@@ -28,7 +30,7 @@ export default function BaseForm(props) {
             <input
               type="number" id="ACS" name="ACS" defaultValue={200}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onClick={e => setACS(e.target.value)}  
+              onChange={e => setACS(e.target.value)}  
             />
           </div>
           <div className='flex flex-col'>
@@ -36,7 +38,7 @@ export default function BaseForm(props) {
             <input
               type="number" id="KD" name="KD" defaultValue={1}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"  
-              onClick={e => setKD(e.target.value)}  
+              onChange={e => setKD(e.target.value)}  
             />
           </div>
           <div className='flex flex-col'>
@@ -44,7 +46,7 @@ export default function BaseForm(props) {
             <input
               type="number" id="ADR" name="ADR" defaultValue={100}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onClick={e => setADR(e.target.value)}  
+              onChange={e => setADR(e.target.value)}  
             />
           </div>
         </div>
@@ -54,7 +56,7 @@ export default function BaseForm(props) {
             <input
               type="number" id="KPR" name="KPR" defaultValue={0.5}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onClick={e => setKPR(e.target.value)} 
+              onChange={e => setKPR(e.target.value)} 
             />
           </div>
           <div className='flex flex-col'>
@@ -62,7 +64,7 @@ export default function BaseForm(props) {
             <input
               type="number" id="APR" name="APR" defaultValue={0.5}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onClick={e => setAPR(e.target.value)} 
+              onChange={e => setAPR(e.target.value)} 
             />
           </div>
           <div className='flex flex-col w-[15.5rem]'>
@@ -70,7 +72,7 @@ export default function BaseForm(props) {
             <input
               type="number" id="FKPR" name="FKPR" defaultValue={0.5}
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
-              onClick={e => setFKPR(e.target.value)} 
+              onChange={e => setFKPR(e.target.value)} 
             />
           </div>
         </div>
