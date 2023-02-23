@@ -27,7 +27,7 @@ function App() {
     } else if (state === STATES[1]) {
       return (
         <img src={LoadingSVG} alt="Loading"
-            className="animate-spin"
+            className="animate-spin mx-auto"
         />
       )
     } else if (state === STATES[2]){
