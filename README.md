@@ -57,3 +57,12 @@ Specific links were taken from:
 5. [VRL 2022](https://www.vlr.gg/stats/?event_group_id=15&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
 
 I also want to credit [tkomarlu](https://github.com/tkomarlu) for helping me plan out the project/learn how to apply scikit-learn to the idea.
+
+
+# Deployment
+1. .env on frontend needs REACT_APP_BASE_URL set to BE url
+2. build the files and export them into out. The PMML for your model must sit next to your .jar file (see example in repo)
+3. Run Dockerfile to create a website image
+
+# A Quick Note on Testing
+I decided not to test this project since each component is very small/simple. If I end up adding to it, I may add testing, but for now I am more concerned with it working as I expect it to.
