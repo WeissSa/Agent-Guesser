@@ -12,6 +12,7 @@ import java.util.Map;
 
 
 @RestController
+@CrossOrigin()
 public class GuessController {
     private static Guesser agentGuesser;
 
@@ -21,7 +22,6 @@ public class GuessController {
 
     // Using a POST request simplifies process and allows us to use the body
     @PostMapping("/api/v1/guess")
-    @CrossOrigin()
     public Map guessAgentResponse(@RequestBody Stats stats){
         try {
             String agent= agentGuesser.makeGuess(stats);
