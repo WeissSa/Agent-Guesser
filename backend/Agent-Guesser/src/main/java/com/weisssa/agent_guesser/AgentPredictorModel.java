@@ -2,10 +2,11 @@ package com.weisssa.agent_guesser;
 import org.jpmml.evaluator.Evaluator;
 import org.jpmml.evaluator.EvaluatorUtil;
 import org.jpmml.evaluator.LoadingModelEvaluatorBuilder;
-import org.springframework.util.ResourceUtils;
+import org.springframework.core.io.ClassPathResource;
+import org.springframework.core.io.Resource;
 
-import java.io.File;
-import java.util.Arrays;
+import java.io.InputStream;
+
 import java.util.Map;
 
 public class AgentPredictorModel {
@@ -13,8 +14,9 @@ public class AgentPredictorModel {
 
     public AgentPredictorModel(){
         try {
-            File file = ResourceUtils.getFile("classpath:model.pmml");
-            evaluator = new LoadingModelEvaluatorBuilder().load(file).build();
+            Resource resource = new ClassPathResource("model.pmml");
+            InputStream inputStream = resource.getInputStream();
+            evaluator = new LoadingModelEvaluatorBuilder().load(inputStream).build();
             evaluator.verify();
         } catch (Exception e) {
             System.out.println(e.getMessage());
