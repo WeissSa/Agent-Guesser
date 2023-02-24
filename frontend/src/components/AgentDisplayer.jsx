@@ -45,16 +45,18 @@ export default function AgentDisplayer(props) {
             If you didn't play {agent.slice(0, 1).toUpperCase() + agent.slice(1)}, did you play another {agentClass}?
           </p>
         </div>
-        {agentClass !== "controller" &&
-          <p className="text-center w-52 my-auto mx-auto sm:mx-0">
-            If your agent's class is not correct, then did you play {classToRoleMap[agentClass]}? <br />
-            These agents often get stats similar to another class due to their in-game role.
-          </p>}
-        {["viper", "chamber", "sage"].includes(agent) && 
-            <p>
-                Since you got {agent.slice(0, 1).toUpperCase() + agent.slice(1)} it is also possible you were a {agentToAltRole[agent]} for a similar reason as above.
-            </p>
-        }
+        <div className='flex flex-col'>
+            {agentClass !== "controller" &&
+            <p className="text-center w-52 my-auto mx-auto sm:mx-0">
+                If your agent's class is not correct, then did you play {classToRoleMap[agentClass]}? <br />
+                These agents often get stats similar to another class due to their in-game role.
+            </p>}
+            {["viper", "chamber", "sage"].includes(agent) && 
+                <p className="text-center w-52 my-auto mx-auto sm:mx-0">
+                    Since you got {agent.slice(0, 1).toUpperCase() + agent.slice(1)} it is also possible you were a {agentToAltRole[agent]} for a similar reason as above.
+                </p>
+            }
+        </div>
       </div>
       <button
         className='bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded sm:align-middle w-fit mx-auto h-12'
