@@ -21,7 +21,7 @@ public class GuessController {
 
     // Using a POST request simplifies process and allows us to use the body
     @PostMapping("/api/v1/guess")
-    @CrossOrigin(origins = "http://localhost:3000")
+    @CrossOrigin()
     public Map guessAgentResponse(@RequestBody Stats stats){
         try {
             String agent= agentGuesser.makeGuess(stats);
