@@ -24,7 +24,6 @@ public class GuessController {
     @CrossOrigin(origins = "http://localhost:3000")
     public Map guessAgentResponse(@RequestBody Stats stats){
         try {
-            System.out.println(stats.getMap());
             String agent= agentGuesser.makeGuess(stats);
             return new HashMap<String, String>() {{
                 put("Agent", agent);
