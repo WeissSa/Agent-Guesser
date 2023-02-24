@@ -33,7 +33,7 @@ There are some agents which when played in pro-play, fit better into other class
 |    Reyna    |             Skye             |                   |             |
 |     Yoru    |             Sova             |                   |             |
 
-When categorizing like this, I achieved a ~68% success rate.
+When categorizing like this, I achieved a ~70% success rate using an LGBMClassifier.
 
 In the end, I send the agent guess to the frontend and then manually categorize, but I am very happy with the accuracy of my results given the variety and similarity of agents.
 

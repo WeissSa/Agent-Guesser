@@ -2,6 +2,7 @@ import BaseForm from "./components/BaseForm";
 import { useState } from "react";
 import LoadingSVG from "./images/loading.svg";
 import AgentDisplayer from "./components/AgentDisplayer";
+import gitHubIcon from "./images/GitHub.png";
 
 
 const STATES = [
@@ -53,6 +54,11 @@ function App() {
           {renderMainContent()}
         </div>
       </div>
+      <footer>
+        <a href="https://github.com/WeissSa/Agent-Guesser">
+          <img src={gitHubIcon} alt="GitHub link" className="absolute right-2 bottom-2 w-20"/>
+        </a>
+      </footer>
     </div>
   );
 }
