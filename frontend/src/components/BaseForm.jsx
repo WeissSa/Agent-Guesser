@@ -21,7 +21,7 @@ export default function BaseForm(props) {
   }
 
   return (
-    <div className='flex flex-col gap-y-5 w-3/4 sm:w-auto'>
+    <div className='flex flex-col gap-y-5 w-3/4 lg:w-auto'>
       <h3 className='text-3xl'> Enter your stats</h3>
       <form className='flex-col flex justify-center gap-y-10'>
         <div className='flex flex-col sm:flex-row gap-y-3 gap-x-5'>

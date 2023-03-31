@@ -54,9 +54,9 @@ function App() {
           {renderMainContent()}
         </div>
       </div>
-      <footer>
+      <footer className="fixed right-2 bottom-2 w-20">
         <a href="https://github.com/WeissSa/Agent-Guesser">
-          <img src={gitHubIcon} alt="GitHub link" className="absolute right-2 bottom-2 w-20"/>
+          <img src={gitHubIcon} alt="GitHub link"/>
         </a>
       </footer>
     </div>
