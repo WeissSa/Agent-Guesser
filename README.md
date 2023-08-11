@@ -39,7 +39,7 @@ There are some agents which when played in pro-play, fit better into other class
 |    Reyna    |             Skye             |                   |             |
 |     Yoru    |             Sova             |                   |             |
 
-When categorizing like this, I achieved a ~70% success rate using an LGBMClassifier.
+When categorizing like this, I achieved a ~70% success rate using SVC.
 
 In the end, I send the agent guess to the frontend and then manually categorize, but I am very happy with the accuracy of my results given the variety and similarity of agents.
 
@@ -61,6 +61,8 @@ Specific links were taken from:
 3. [Knights Gauntlet Circuit 2022](https://www.vlr.gg/stats/?event_group_id=21&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
 4. [VCT Game Changers 2022](https://www.vlr.gg/stats/?event_group_id=17&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
 5. [VRL 2022](https://www.vlr.gg/stats/?event_group_id=15&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all)
+1. [VCT 2023]("https://www.vlr.gg/stats/?event_group_id=45&event_id=all&region=all&country=all&min_rounds=20&min_rating=500&agent={agent}&map_id=all&timespan=all"
+)
 
 I also want to credit [tkomarlu](https://github.com/tkomarlu) for helping me plan out the project/learn how to apply scikit-learn to the idea.
 
