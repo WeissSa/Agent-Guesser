@@ -19,6 +19,7 @@ const agentToClassMap = {
     "reyna": "duelist",
     "phoenix": "duelist",
     "harbor": "controller",
+    "gekko": "initiator",
 }
 
 export default agentToClassMap;

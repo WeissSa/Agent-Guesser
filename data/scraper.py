@@ -10,6 +10,7 @@ URLS = [
     "https://www.vlr.gg/stats/?event_group_id=21&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
     "https://www.vlr.gg/stats/?event_group_id=17&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
     "https://www.vlr.gg/stats/?event_group_id=15&event_id=all&region=all&country=all&min_rounds=100&min_rating=500&agent={agent}&map_id=all&timespan=all",
+    "https://www.vlr.gg/stats/?event_group_id=45&event_id=all&region=all&country=all&min_rounds=20&min_rating=500&agent={agent}&map_id=all&timespan=all"
 ]
 
 def main():
@@ -25,6 +26,8 @@ def main():
 
             # find the rows by finding each player and taking the parent
             rows += [player.parent for player in player_table.find_all(class_="mod-player mod-a")]
+            print("Finished scraping", agent, "for URL", URLS.index(URL) + 1)
+        print("----- Finished scraping URL:", URL, "-----")
     
     # create column arrays
     name = []
@@ -70,6 +73,7 @@ def main():
 
     dataframe = pd.DataFrame(data=data)
     dataframe.to_csv("player_data.csv", index=False)
+    print("Created CSV")
 
 def format_agent_url(url: str) -> str:
     """

@@ -19,6 +19,7 @@ AGENT_MAP = {
     "reyna": 17,
     "phoenix": 18,
     "harbor": 19,
+    "gekko": 20
 }
 
 # 0 = duelist
@@ -46,6 +47,7 @@ AGENT_MAP_TO_CLASS = {
     "reyna": 0,
     "phoenix": 0,
     "harbor": 2,
+    "gekko": 3
 }
 
 # 0 = Duelist + chamber
@@ -73,4 +75,5 @@ AGENT_MAP_TO_ROLE = {
     "reyna": 0,
     "phoenix": 0,
     "harbor": 2,
+    "gekko": 3
 }

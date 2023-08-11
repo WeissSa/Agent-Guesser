@@ -2,12 +2,12 @@
 <PMML xmlns="http://www.dmg.org/PMML-4_4" xmlns:data="http://jpmml.org/jpmml-model/InlineTable" version="4.4">
 	<Header>
 		<Application name="SkLearn2PMML package" version="0.90.4"/>
-		<Timestamp>2023-02-21T19:46:31Z</Timestamp>
+		<Timestamp>2023-08-11T19:32:40Z</Timestamp>
 	</Header>
 	<MiningBuildTask>
 		<Extension name="repr">PMMLPipeline(steps=[('sc', StandardScaler()),
        ('pca', PCA()),
-       ('classifier', GaussianNB())])</Extension>
+       ('classifier', LogisticRegression())])</Extension>
 	</MiningBuildTask>
 	<DataDictionary>
 		<DataField name="0" optype="categorical" dataType="integer">
@@ -31,6 +31,7 @@
 			<Value value="17"/>
 			<Value value="18"/>
 			<Value value="19"/>
+			<Value value="20"/>
 		</DataField>
 		<DataField name="ACS" optype="continuous" dataType="double"/>
 		<DataField name="KD" optype="continuous" dataType="double"/>
@@ -39,7 +40,7 @@
 		<DataField name="APR" optype="continuous" dataType="double"/>
 		<DataField name="FKPR" optype="continuous" dataType="double"/>
 	</DataDictionary>
-	<NaiveBayesModel threshold="0.0" functionName="classification" algorithmName="sklearn.naive_bayes.GaussianNB">
+	<RegressionModel functionName="classification" algorithmName="sklearn.linear_model._logistic.LogisticRegression" normalizationMethod="softmax">
 		<MiningSchema>
 			<MiningField name="0" usageType="target"/>
 			<MiningField name="ACS"/>
@@ -70,60 +71,61 @@
 			<OutputField name="probability(17)" optype="continuous" dataType="double" feature="probability" value="17"/>
 			<OutputField name="probability(18)" optype="continuous" dataType="double" feature="probability" value="18"/>
 			<OutputField name="probability(19)" optype="continuous" dataType="double" feature="probability" value="19"/>
+			<OutputField name="probability(20)" optype="continuous" dataType="double" feature="probability" value="20"/>
 		</Output>
 		<LocalTransformations>
 			<DerivedField name="standardScaler(ACS)" optype="continuous" dataType="double">
 				<Apply function="/">
 					<Apply function="-">
 						<FieldRef field="ACS"/>
-						<Constant dataType="double">204.018254625794</Constant>
+						<Constant dataType="double">202.90454433497536</Constant>
 					</Apply>
-					<Constant dataType="double">32.31211073637954</Constant>
+					<Constant dataType="double">33.1615329304125</Constant>
 				</Apply>
 			</DerivedField>
 			<DerivedField name="standardScaler(KD)" optype="continuous" dataType="double">
 				<Apply function="/">
 					<Apply function="-">
 						<FieldRef field="KD"/>
-						<Constant dataType="double">1.0301049433858052</Constant>
+						<Constant dataType="double">1.0219987684729066</Constant>
 					</Apply>
-					<Constant dataType="double">0.20287743685088577</Constant>
+					<Constant dataType="double">0.2064554425346494</Constant>
 				</Apply>
 			</DerivedField>
 			<DerivedField name="standardScaler(ADR)" optype="continuous" dataType="double">
 				<Apply function="/">
 					<Apply function="-">
 						<FieldRef field="ADR"/>
-						<Constant dataType="double">133.74424192212098</Constant>
+						<Constant dataType="double">132.99354679802957</Constant>
 					</Apply>
-					<Constant dataType="double">19.74144200843086</Constant>
+					<Constant dataType="double">20.54133571933698</Constant>
 				</Apply>
 			</DerivedField>
 			<DerivedField name="standardScaler(KPR)" optype="continuous" dataType="double">
 				<Apply function="/">
 					<Apply function="-">
 						<FieldRef field="KPR"/>
-						<Constant dataType="double">0.7133057166528584</Constant>
+						<Constant dataType="double">0.7202635467980295</Constant>
 					</Apply>
-					<Constant dataType="double">0.11661528505776556</Constant>
+					<Constant dataType="double">0.192023973516731</Constant>
 				</Apply>
 			</DerivedField>
 			<DerivedField name="standardScaler(APR)" optype="continuous" dataType="double">
 				<Apply function="/">
 					<Apply function="-">
 						<FieldRef field="APR"/>
-						<Constant dataType="double">0.27126898646782655</Constant>
+						<Constant dataType="double">0.2812549261083744</Constant>
 					</Apply>
-					<Constant dataType="double">0.10517120746497625</Constant>
+					<Constant dataType="double">0.1309474344123692</Constant>
 				</Apply>
 			</DerivedField>
 			<DerivedField name="standardScaler(FKPR)" optype="continuous" dataType="double">
 				<Apply function="/">
 					<Apply function="-">
 						<FieldRef field="FKPR"/>
-						<Constant dataType="double">0.100901684617509</Constant>
+						<Constant dataType="double">0.10040640394088671</Constant>
 					</Apply>
-					<Constant dataType="double">0.055312888220994214</Constant>
+					<Constant dataType="double">0.05605861955118602</Constant>
 				</Apply>
 			</DerivedField>
 			<DerivedField name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" optype="continuous" dataType="double">
@@ -131,44 +133,44 @@
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ACS)"/>
-							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+							<Constant dataType="double">4.314009467114894E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.47022266657052847</Constant>
+						<Constant dataType="double">0.5079846330721187</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KD)"/>
-							<Constant dataType="double">-6.451005920495248E-16</Constant>
+							<Constant dataType="double">-9.485570511871289E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.40730308596636156</Constant>
+						<Constant dataType="double">0.4398037478425004</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ADR)"/>
-							<Constant dataType="double">-8.310269223816693E-16</Constant>
+							<Constant dataType="double">-6.405385253403859E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.4574559056688421</Constant>
+						<Constant dataType="double">0.49346175669536685</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KPR)"/>
-							<Constant dataType="double">-2.658893694987395E-16</Constant>
+							<Constant dataType="double">2.55077841716834E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.4724238694925471</Constant>
+						<Constant dataType="double">0.3599229856910446</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(APR)"/>
-							<Constant dataType="double">2.300777016511233E-16</Constant>
+							<Constant dataType="double">3.65334473127884E-17</Constant>
 						</Apply>
-						<Constant dataType="double">-0.21285551803211944</Constant>
+						<Constant dataType="double">-0.1568925916256773</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(FKPR)"/>
-							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+							<Constant dataType="double">-8.838031565488931E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.36774604056501525</Constant>
+						<Constant dataType="double">0.3884069125152382</Constant>
 					</Apply>
 				</Apply>
 			</DerivedField>
@@ -177,44 +179,44 @@
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ACS)"/>
-							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+							<Constant dataType="double">4.314009467114894E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.13868036847307477</Constant>
+						<Constant dataType="double">0.024555718214894065</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KD)"/>
-							<Constant dataType="double">-6.451005920495248E-16</Constant>
+							<Constant dataType="double">-9.485570511871289E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.3388867677767299</Constant>
+						<Constant dataType="double">0.16073178948063924</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ADR)"/>
-							<Constant dataType="double">-8.310269223816693E-16</Constant>
+							<Constant dataType="double">-6.405385253403859E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.14500080881594546</Constant>
+						<Constant dataType="double">0.005378391955284015</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KPR)"/>
-							<Constant dataType="double">-2.658893694987395E-16</Constant>
+							<Constant dataType="double">2.55077841716834E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.12118574258303708</Constant>
+						<Constant dataType="double">0.471242162642285</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(APR)"/>
-							<Constant dataType="double">2.300777016511233E-16</Constant>
+							<Constant dataType="double">3.65334473127884E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.8080657457945171</Constant>
+						<Constant dataType="double">0.7996884619661777</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(FKPR)"/>
-							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+							<Constant dataType="double">-8.838031565488931E-17</Constant>
 						</Apply>
-						<Constant dataType="double">-0.4210012419659629</Constant>
+						<Constant dataType="double">-0.33460808328501296</Constant>
 					</Apply>
 				</Apply>
 			</DerivedField>
@@ -223,44 +225,44 @@
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ACS)"/>
-							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+							<Constant dataType="double">4.314009467114894E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.1289451013079887</Constant>
+						<Constant dataType="double">-0.11402066136615067</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KD)"/>
-							<Constant dataType="double">-6.451005920495248E-16</Constant>
+							<Constant dataType="double">-9.485570511871289E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.4625658509307669</Constant>
+						<Constant dataType="double">-0.5488433702401113</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ADR)"/>
-							<Constant dataType="double">-8.310269223816693E-16</Constant>
+							<Constant dataType="double">-6.405385253403859E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.07037978959893268</Constant>
+						<Constant dataType="double">-0.19092645769130376</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KPR)"/>
-							<Constant dataType="double">-2.658893694987395E-16</Constant>
+							<Constant dataType="double">2.55077841716834E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.09357411019119635</Constant>
+						<Constant dataType="double">0.436228950260362</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(APR)"/>
-							<Constant dataType="double">2.300777016511233E-16</Constant>
+							<Constant dataType="double">3.65334473127884E-17</Constant>
 						</Apply>
-						<Constant dataType="double">-0.531613977860991</Constant>
+						<Constant dataType="double">0.13577267438765947</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(FKPR)"/>
-							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+							<Constant dataType="double">-8.838031565488931E-17</Constant>
 						</Apply>
-						<Constant dataType="double">-0.6878103983381744</Constant>
+						<Constant dataType="double">0.6637675913472412</Constant>
 					</Apply>
 				</Apply>
 			</DerivedField>
@@ -269,44 +271,44 @@
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ACS)"/>
-							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+							<Constant dataType="double">4.314009467114894E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.27922706643667794</Constant>
+						<Constant dataType="double">-0.26573593486266256</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KD)"/>
-							<Constant dataType="double">-6.451005920495248E-16</Constant>
+							<Constant dataType="double">-9.485570511871289E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.6191500254823639</Constant>
+						<Constant dataType="double">0.17011234969589403</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ADR)"/>
-							<Constant dataType="double">-8.310269223816693E-16</Constant>
+							<Constant dataType="double">-6.405385253403859E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.5764729622299896</Constant>
+						<Constant dataType="double">-0.2861446240790405</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KPR)"/>
-							<Constant dataType="double">-2.658893694987395E-16</Constant>
+							<Constant dataType="double">2.55077841716834E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.014200708281014052</Constant>
+						<Constant dataType="double">0.6568875057977834</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(APR)"/>
-							<Constant dataType="double">2.300777016511233E-16</Constant>
+							<Constant dataType="double">3.65334473127884E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.11800660942054311</Constant>
+						<Constant dataType="double">-0.5402782214932573</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(FKPR)"/>
-							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+							<Constant dataType="double">-8.838031565488931E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.43844862315842903</Constant>
+						<Constant dataType="double">-0.3084893898031564</Constant>
 					</Apply>
 				</Apply>
 			</DerivedField>
@@ -315,44 +317,44 @@
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ACS)"/>
-							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+							<Constant dataType="double">4.314009467114894E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.21475821753662153</Constant>
+						<Constant dataType="double">-0.23143841474533897</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KD)"/>
-							<Constant dataType="double">-6.451005920495248E-16</Constant>
+							<Constant dataType="double">-9.485570511871289E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.3387417284676838</Constant>
+						<Constant dataType="double">0.6607723734335422</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ADR)"/>
-							<Constant dataType="double">-8.310269223816693E-16</Constant>
+							<Constant dataType="double">-6.405385253403859E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.5463476949757042</Constant>
+						<Constant dataType="double">-0.5226569737368585</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KPR)"/>
-							<Constant dataType="double">-2.658893694987395E-16</Constant>
+							<Constant dataType="double">2.55077841716834E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.722625080854907</Constant>
+						<Constant dataType="double">-0.16275523262806413</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(APR)"/>
-							<Constant dataType="double">2.300777016511233E-16</Constant>
+							<Constant dataType="double">3.65334473127884E-17</Constant>
 						</Apply>
-						<Constant dataType="double">-0.025345119689105515</Constant>
+						<Constant dataType="double">0.15433921505696732</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(FKPR)"/>
-							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+							<Constant dataType="double">-8.838031565488931E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.13344573060738318</Constant>
+						<Constant dataType="double">0.4316664909848589</Constant>
 					</Apply>
 				</Apply>
 			</DerivedField>
@@ -361,457 +363,215 @@
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ACS)"/>
-							<Constant dataType="double">-1.9917174172783807E-16</Constant>
+							<Constant dataType="double">4.314009467114894E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.7867291233085288</Constant>
+						<Constant dataType="double">-0.7772828257140331</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KD)"/>
-							<Constant dataType="double">-6.451005920495248E-16</Constant>
+							<Constant dataType="double">-9.485570511871289E-16</Constant>
 						</Apply>
-						<Constant dataType="double">-0.08485325969418672</Constant>
+						<Constant dataType="double">0.11811252755513996</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(ADR)"/>
-							<Constant dataType="double">-8.310269223816693E-16</Constant>
+							<Constant dataType="double">-6.405385253403859E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.3659763175943864</Constant>
+						<Constant dataType="double">0.6041229984427368</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(KPR)"/>
-							<Constant dataType="double">-2.658893694987395E-16</Constant>
+							<Constant dataType="double">2.55077841716834E-16</Constant>
 						</Apply>
-						<Constant dataType="double">0.4806089071521348</Constant>
+						<Constant dataType="double">0.010005521133941264</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(APR)"/>
-							<Constant dataType="double">2.300777016511233E-16</Constant>
+							<Constant dataType="double">3.65334473127884E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.0673863673205148</Constant>
+						<Constant dataType="double">0.04156572453900758</Constant>
 					</Apply>
 					<Apply function="*">
 						<Apply function="-">
 							<FieldRef field="standardScaler(FKPR)"/>
-							<Constant dataType="double">-3.1592759032691557E-16</Constant>
+							<Constant dataType="double">-8.838031565488931E-17</Constant>
 						</Apply>
-						<Constant dataType="double">0.06627745984037597</Constant>
+						<Constant dataType="double">0.12283494017374294</Constant>
 					</Apply>
 				</Apply>
 			</DerivedField>
 		</LocalTransformations>
-		<BayesInputs>
-			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]">
-				<TargetValueStats>
-					<TargetValueStat value="0">
-						<GaussianDistribution mean="-0.9430617600958026" variance="2.4732705755979425"/>
-					</TargetValueStat>
-					<TargetValueStat value="1">
-						<GaussianDistribution mean="1.941192082392916" variance="2.8376937665568676"/>
-					</TargetValueStat>
-					<TargetValueStat value="2">
-						<GaussianDistribution mean="1.6214500741992786" variance="3.161269546739561"/>
-					</TargetValueStat>
-					<TargetValueStat value="3">
-						<GaussianDistribution mean="2.039253200382537" variance="3.1008359432822594"/>
-					</TargetValueStat>
-					<TargetValueStat value="4">
-						<GaussianDistribution mean="0.18772867728157192" variance="2.987033781660037"/>
-					</TargetValueStat>
-					<TargetValueStat value="5">
-						<GaussianDistribution mean="-0.5405447293290697" variance="2.1144558954586365"/>
-					</TargetValueStat>
-					<TargetValueStat value="6">
-						<GaussianDistribution mean="-0.7350735448418124" variance="2.1259457518334908"/>
-					</TargetValueStat>
-					<TargetValueStat value="7">
-						<GaussianDistribution mean="-1.643450940449961" variance="2.06882164875665"/>
-					</TargetValueStat>
-					<TargetValueStat value="8">
-						<GaussianDistribution mean="-1.082461296218252" variance="2.3077655935775248"/>
-					</TargetValueStat>
-					<TargetValueStat value="9">
-						<GaussianDistribution mean="-0.7462912179694758" variance="2.2677500114725846"/>
-					</TargetValueStat>
-					<TargetValueStat value="10">
-						<GaussianDistribution mean="-0.9858385805772436" variance="2.2147259064067684"/>
-					</TargetValueStat>
-					<TargetValueStat value="11">
-						<GaussianDistribution mean="-1.1567369625439476" variance="2.7234897328196674"/>
-					</TargetValueStat>
-					<TargetValueStat value="12">
-						<GaussianDistribution mean="-0.9106956483876656" variance="2.3177467844323885"/>
-					</TargetValueStat>
-					<TargetValueStat value="13">
-						<GaussianDistribution mean="-0.4302171174191161" variance="2.7038203456057257"/>
-					</TargetValueStat>
-					<TargetValueStat value="14">
-						<GaussianDistribution mean="1.9489439079864532" variance="2.334233067835813"/>
-					</TargetValueStat>
-					<TargetValueStat value="15">
-						<GaussianDistribution mean="1.634668655691421" variance="3.438093425195122"/>
-					</TargetValueStat>
-					<TargetValueStat value="16">
-						<GaussianDistribution mean="-1.4045741054822973" variance="2.0490164804658635"/>
-					</TargetValueStat>
-					<TargetValueStat value="17">
-						<GaussianDistribution mean="2.0879596087335446" variance="3.9899898818951134"/>
-					</TargetValueStat>
-					<TargetValueStat value="18">
-						<GaussianDistribution mean="2.8432018163934405" variance="1.624716467156363"/>
-					</TargetValueStat>
-					<TargetValueStat value="19">
-						<GaussianDistribution mean="0.3173766293222505" variance="4.280190661942241E-9"/>
-					</TargetValueStat>
-				</TargetValueStats>
-			</BayesInput>
-			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]">
-				<TargetValueStats>
-					<TargetValueStat value="0">
-						<GaussianDistribution mean="1.208279230512757" variance="0.7109691118715785"/>
-					</TargetValueStat>
-					<TargetValueStat value="1">
-						<GaussianDistribution mean="-0.23865764658461447" variance="0.45105510202328075"/>
-					</TargetValueStat>
-					<TargetValueStat value="2">
-						<GaussianDistribution mean="-0.9562254943051874" variance="0.42486722227853463"/>
-					</TargetValueStat>
-					<TargetValueStat value="3">
-						<GaussianDistribution mean="-1.087751001840414" variance="0.41319666763687707"/>
-					</TargetValueStat>
-					<TargetValueStat value="4">
-						<GaussianDistribution mean="-0.5150789651500154" variance="0.5276692179261873"/>
-					</TargetValueStat>
-					<TargetValueStat value="5">
-						<GaussianDistribution mean="0.24743052207439895" variance="0.5624629471174161"/>
-					</TargetValueStat>
-					<TargetValueStat value="6">
-						<GaussianDistribution mean="0.42130024100783087" variance="0.6335960409244487"/>
-					</TargetValueStat>
-					<TargetValueStat value="7">
-						<GaussianDistribution mean="0.30285337472687596" variance="0.7734361065155722"/>
-					</TargetValueStat>
-					<TargetValueStat value="8">
-						<GaussianDistribution mean="0.5425655198926465" variance="0.650287809107791"/>
-					</TargetValueStat>
-					<TargetValueStat value="9">
-						<GaussianDistribution mean="0.48362095627267887" variance="0.5160510164938661"/>
-					</TargetValueStat>
-					<TargetValueStat value="10">
-						<GaussianDistribution mean="0.016094539712049397" variance="0.6086227826756144"/>
-					</TargetValueStat>
-					<TargetValueStat value="11">
-						<GaussianDistribution mean="0.4596802931369577" variance="0.5704441627680539"/>
-					</TargetValueStat>
-					<TargetValueStat value="12">
-						<GaussianDistribution mean="0.9766711494853993" variance="0.9456821286296173"/>
-					</TargetValueStat>
-					<TargetValueStat value="13">
-						<GaussianDistribution mean="-0.5567161207924132" variance="0.517006649597449"/>
-					</TargetValueStat>
-					<TargetValueStat value="14">
-						<GaussianDistribution mean="-0.7031271073895595" variance="0.476774707993621"/>
-					</TargetValueStat>
-					<TargetValueStat value="15">
-						<GaussianDistribution mean="-0.8098031877860901" variance="0.4759497060619652"/>
-					</TargetValueStat>
-					<TargetValueStat value="16">
-						<GaussianDistribution mean="0.700290382519796" variance="0.6456539260622539"/>
-					</TargetValueStat>
-					<TargetValueStat value="17">
-						<GaussianDistribution mean="-0.4370746892017484" variance="0.6880478729430147"/>
-					</TargetValueStat>
-					<TargetValueStat value="18">
-						<GaussianDistribution mean="0.28014934621469983" variance="0.14525276308018503"/>
-					</TargetValueStat>
-					<TargetValueStat value="19">
-						<GaussianDistribution mean="0.3294595278464846" variance="4.280190661942241E-9"/>
-					</TargetValueStat>
-				</TargetValueStats>
-			</BayesInput>
-			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]">
-				<TargetValueStats>
-					<TargetValueStat value="0">
-						<GaussianDistribution mean="-0.7954810099888165" variance="0.24789404380746338"/>
-					</TargetValueStat>
-					<TargetValueStat value="1">
-						<GaussianDistribution mean="-0.43999436697042443" variance="0.28095029163949725"/>
-					</TargetValueStat>
-					<TargetValueStat value="2">
-						<GaussianDistribution mean="0.3329886977245337" variance="0.3133709148407569"/>
-					</TargetValueStat>
-					<TargetValueStat value="3">
-						<GaussianDistribution mean="-0.46032952543050215" variance="0.2940231879945625"/>
-					</TargetValueStat>
-					<TargetValueStat value="4">
-						<GaussianDistribution mean="0.701565748790057" variance="0.2603453026594817"/>
-					</TargetValueStat>
-					<TargetValueStat value="5">
-						<GaussianDistribution mean="0.19673720128020586" variance="0.25367040001293123"/>
-					</TargetValueStat>
-					<TargetValueStat value="6">
-						<GaussianDistribution mean="0.1858377884056838" variance="0.21969691570831934"/>
-					</TargetValueStat>
-					<TargetValueStat value="7">
-						<GaussianDistribution mean="0.1050878971370356" variance="0.280188140029743"/>
-					</TargetValueStat>
-					<TargetValueStat value="8">
-						<GaussianDistribution mean="-0.07682818466123668" variance="0.24582836079058984"/>
-					</TargetValueStat>
-					<TargetValueStat value="9">
-						<GaussianDistribution mean="0.2511149719218791" variance="0.23220918040855287"/>
-					</TargetValueStat>
-					<TargetValueStat value="10">
-						<GaussianDistribution mean="0.13776422427954993" variance="0.28422983945952246"/>
-					</TargetValueStat>
-					<TargetValueStat value="11">
-						<GaussianDistribution mean="-0.12254675326763596" variance="0.28611646636537535"/>
-					</TargetValueStat>
-					<TargetValueStat value="12">
-						<GaussianDistribution mean="-0.2558198975453277" variance="0.32920241847880954"/>
-					</TargetValueStat>
-					<TargetValueStat value="13">
-						<GaussianDistribution mean="0.595188640843506" variance="0.2934911481424869"/>
-					</TargetValueStat>
-					<TargetValueStat value="14">
-						<GaussianDistribution mean="-0.02598473324590935" variance="0.24781232839856102"/>
-					</TargetValueStat>
-					<TargetValueStat value="15">
-						<GaussianDistribution mean="-0.6297484446098034" variance="0.28258174297728017"/>
-					</TargetValueStat>
-					<TargetValueStat value="16">
-						<GaussianDistribution mean="-0.05815693494931022" variance="0.2292595966178655"/>
-					</TargetValueStat>
-					<TargetValueStat value="17">
-						<GaussianDistribution mean="0.10096502756967324" variance="0.3496074569253417"/>
-					</TargetValueStat>
-					<TargetValueStat value="18">
-						<GaussianDistribution mean="-0.017650159795277936" variance="0.17052905652609496"/>
-					</TargetValueStat>
-					<TargetValueStat value="19">
-						<GaussianDistribution mean="0.22124954628349827" variance="4.280190661942241E-9"/>
-					</TargetValueStat>
-				</TargetValueStats>
-			</BayesInput>
-			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]">
-				<TargetValueStats>
-					<TargetValueStat value="0">
-						<GaussianDistribution mean="0.006257441617679471" variance="0.11443997075568549"/>
-					</TargetValueStat>
-					<TargetValueStat value="1">
-						<GaussianDistribution mean="-0.4773215051560421" variance="0.12889280712062012"/>
-					</TargetValueStat>
-					<TargetValueStat value="2">
-						<GaussianDistribution mean="0.1988965144176362" variance="0.20306602457550543"/>
-					</TargetValueStat>
-					<TargetValueStat value="3">
-						<GaussianDistribution mean="0.14155708300683162" variance="0.1701850119972709"/>
-					</TargetValueStat>
-					<TargetValueStat value="4">
-						<GaussianDistribution mean="-0.29142785701419904" variance="0.17395767778972587"/>
-					</TargetValueStat>
-					<TargetValueStat value="5">
-						<GaussianDistribution mean="-0.061161649978478054" variance="0.1365486533038086"/>
-					</TargetValueStat>
-					<TargetValueStat value="6">
-						<GaussianDistribution mean="-0.2866592055285937" variance="0.1600000060857538"/>
-					</TargetValueStat>
-					<TargetValueStat value="7">
-						<GaussianDistribution mean="0.10679439820598519" variance="0.13198027418117012"/>
-					</TargetValueStat>
-					<TargetValueStat value="8">
-						<GaussianDistribution mean="0.18592505468988077" variance="0.14486325546783455"/>
-					</TargetValueStat>
-					<TargetValueStat value="9">
-						<GaussianDistribution mean="0.16188723536410252" variance="0.1589219199360694"/>
-					</TargetValueStat>
-					<TargetValueStat value="10">
-						<GaussianDistribution mean="0.06688576757878127" variance="0.12028724846180266"/>
-					</TargetValueStat>
-					<TargetValueStat value="11">
-						<GaussianDistribution mean="0.2362976910715779" variance="0.1633447326231084"/>
-					</TargetValueStat>
-					<TargetValueStat value="12">
-						<GaussianDistribution mean="0.07592143712344482" variance="0.14077697938859776"/>
-					</TargetValueStat>
-					<TargetValueStat value="13">
-						<GaussianDistribution mean="0.05129775309452992" variance="0.15949422025155813"/>
-					</TargetValueStat>
-					<TargetValueStat value="14">
-						<GaussianDistribution mean="-0.03368479928143886" variance="0.09069176613939565"/>
-					</TargetValueStat>
-					<TargetValueStat value="15">
-						<GaussianDistribution mean="0.02437457998796964" variance="0.1484613491068907"/>
-					</TargetValueStat>
-					<TargetValueStat value="16">
-						<GaussianDistribution mean="0.14639141172028539" variance="0.12659344082844848"/>
-					</TargetValueStat>
-					<TargetValueStat value="17">
-						<GaussianDistribution mean="-0.21027427566287443" variance="0.16697343598853737"/>
-					</TargetValueStat>
-					<TargetValueStat value="18">
-						<GaussianDistribution mean="-0.2680039600295075" variance="0.1252328837471163"/>
-					</TargetValueStat>
-					<TargetValueStat value="19">
-						<GaussianDistribution mean="0.018196486095182426" variance="4.280190661942241E-9"/>
-					</TargetValueStat>
-				</TargetValueStats>
-			</BayesInput>
-			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]">
-				<TargetValueStats>
-					<TargetValueStat value="0">
-						<GaussianDistribution mean="-0.06815595672048456" variance="0.02749336116954457"/>
-					</TargetValueStat>
-					<TargetValueStat value="1">
-						<GaussianDistribution mean="0.11448453864814467" variance="0.03139410768641444"/>
-					</TargetValueStat>
-					<TargetValueStat value="2">
-						<GaussianDistribution mean="-0.022517611581843733" variance="0.03711271166370508"/>
-					</TargetValueStat>
-					<TargetValueStat value="3">
-						<GaussianDistribution mean="-0.04291753853139106" variance="0.03301926714715677"/>
-					</TargetValueStat>
-					<TargetValueStat value="4">
-						<GaussianDistribution mean="0.1684911481701424" variance="0.03357995164239925"/>
-					</TargetValueStat>
-					<TargetValueStat value="5">
-						<GaussianDistribution mean="0.023293615945756036" variance="0.03509185438644469"/>
-					</TargetValueStat>
-					<TargetValueStat value="6">
-						<GaussianDistribution mean="0.17019427888795088" variance="0.035612258156410996"/>
-					</TargetValueStat>
-					<TargetValueStat value="7">
-						<GaussianDistribution mean="-0.06764117311183761" variance="0.030298171017022257"/>
-					</TargetValueStat>
-					<TargetValueStat value="8">
-						<GaussianDistribution mean="-0.11191749240833879" variance="0.03535944035114003"/>
-					</TargetValueStat>
-					<TargetValueStat value="9">
-						<GaussianDistribution mean="-0.06142027176101515" variance="0.03174790407492204"/>
-					</TargetValueStat>
-					<TargetValueStat value="10">
-						<GaussianDistribution mean="-0.08742901443576558" variance="0.029219383133355297"/>
-					</TargetValueStat>
-					<TargetValueStat value="11">
-						<GaussianDistribution mean="-0.06716602935469558" variance="0.03607225484068378"/>
-					</TargetValueStat>
-					<TargetValueStat value="12">
-						<GaussianDistribution mean="-0.03627242424980439" variance="0.034108610857826877"/>
-					</TargetValueStat>
-					<TargetValueStat value="13">
-						<GaussianDistribution mean="0.01270840782643721" variance="0.03564775902929654"/>
-					</TargetValueStat>
-					<TargetValueStat value="14">
-						<GaussianDistribution mean="-0.015139238375414893" variance="0.02921063955351806"/>
-					</TargetValueStat>
-					<TargetValueStat value="15">
-						<GaussianDistribution mean="-0.05416356255010516" variance="0.04266390916875902"/>
-					</TargetValueStat>
-					<TargetValueStat value="16">
-						<GaussianDistribution mean="-0.08519307683970928" variance="0.034165350907684196"/>
-					</TargetValueStat>
-					<TargetValueStat value="17">
-						<GaussianDistribution mean="-0.07009108455581935" variance="0.04715732423003897"/>
-					</TargetValueStat>
-					<TargetValueStat value="18">
-						<GaussianDistribution mean="0.04415489518798063" variance="0.041454060979473836"/>
-					</TargetValueStat>
-					<TargetValueStat value="19">
-						<GaussianDistribution mean="-0.19400562546393174" variance="4.280190661942241E-9"/>
-					</TargetValueStat>
-				</TargetValueStats>
-			</BayesInput>
-			<BayesInput fieldName="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]">
-				<TargetValueStats>
-					<TargetValueStat value="0">
-						<GaussianDistribution mean="0.00954991860560875" variance="0.013286969153716688"/>
-					</TargetValueStat>
-					<TargetValueStat value="1">
-						<GaussianDistribution mean="-0.04335898986408845" variance="0.013789507922150253"/>
-					</TargetValueStat>
-					<TargetValueStat value="2">
-						<GaussianDistribution mean="0.01270162643963544" variance="0.015252855364787347"/>
-					</TargetValueStat>
-					<TargetValueStat value="3">
-						<GaussianDistribution mean="0.0024729931056460463" variance="0.015619133938323903"/>
-					</TargetValueStat>
-					<TargetValueStat value="4">
-						<GaussianDistribution mean="-0.017368600366956595" variance="0.017342987424415306"/>
-					</TargetValueStat>
-					<TargetValueStat value="5">
-						<GaussianDistribution mean="-0.03727543313171896" variance="0.014188984861217127"/>
-					</TargetValueStat>
-					<TargetValueStat value="6">
-						<GaussianDistribution mean="0.006913538123814369" variance="0.010884637910266387"/>
-					</TargetValueStat>
-					<TargetValueStat value="7">
-						<GaussianDistribution mean="0.014309657577314781" variance="0.011732330567089076"/>
-					</TargetValueStat>
-					<TargetValueStat value="8">
-						<GaussianDistribution mean="0.00673943238356949" variance="0.012630773059661104"/>
-					</TargetValueStat>
-					<TargetValueStat value="9">
-						<GaussianDistribution mean="0.06032395248052898" variance="0.01583762039523268"/>
-					</TargetValueStat>
-					<TargetValueStat value="10">
-						<GaussianDistribution mean="0.014585779738797301" variance="0.013766782388831925"/>
-					</TargetValueStat>
-					<TargetValueStat value="11">
-						<GaussianDistribution mean="-0.001190772912345833" variance="0.0190796740475053"/>
-					</TargetValueStat>
-					<TargetValueStat value="12">
-						<GaussianDistribution mean="-0.027896797396462954" variance="0.012385821022950761"/>
-					</TargetValueStat>
-					<TargetValueStat value="13">
-						<GaussianDistribution mean="0.0017044370681863735" variance="0.014872886435790862"/>
-					</TargetValueStat>
-					<TargetValueStat value="14">
-						<GaussianDistribution mean="0.005773808744846806" variance="0.010123529697187243"/>
-					</TargetValueStat>
-					<TargetValueStat value="15">
-						<GaussianDistribution mean="-0.04373448318472205" variance="0.012218277822520923"/>
-					</TargetValueStat>
-					<TargetValueStat value="16">
-						<GaussianDistribution mean="-0.029188556873154952" variance="0.014824283090411268"/>
-					</TargetValueStat>
-					<TargetValueStat value="17">
-						<GaussianDistribution mean="0.024721736752323503" variance="0.01609263570644997"/>
-					</TargetValueStat>
-					<TargetValueStat value="18">
-						<GaussianDistribution mean="-0.011701827425078774" variance="0.0032648848329944716"/>
-					</TargetValueStat>
-					<TargetValueStat value="19">
-						<GaussianDistribution mean="-0.07564580216228425" variance="4.280190661942241E-9"/>
-					</TargetValueStat>
-				</TargetValueStats>
-			</BayesInput>
-		</BayesInputs>
-		<BayesOutput fieldName="0">
-			<TargetValueCounts>
-				<TargetValueCount value="0" count="459"/>
-				<TargetValueCount value="1" count="429"/>
-				<TargetValueCount value="2" count="750"/>
-				<TargetValueCount value="3" count="849"/>
-				<TargetValueCount value="4" count="411"/>
-				<TargetValueCount value="5" count="614"/>
-				<TargetValueCount value="6" count="874"/>
-				<TargetValueCount value="7" count="425"/>
-				<TargetValueCount value="8" count="389"/>
-				<TargetValueCount value="9" count="457"/>
-				<TargetValueCount value="10" count="388"/>
-				<TargetValueCount value="11" count="346"/>
-				<TargetValueCount value="12" count="203"/>
-				<TargetValueCount value="13" count="173"/>
-				<TargetValueCount value="14" count="10"/>
-				<TargetValueCount value="15" count="100"/>
-				<TargetValueCount value="16" count="257"/>
-				<TargetValueCount value="17" count="98"/>
-				<TargetValueCount value="18" count="9"/>
-				<TargetValueCount value="19" count="1"/>
-			</TargetValueCounts>
-		</BayesOutput>
-	</NaiveBayesModel>
+		<RegressionTable intercept="0.5191731671452369" targetCategory="0">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.84857708361146"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="2.0994466344782245"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.4373024231799322"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-4.113931660197133"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.22372646319617656"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-2.177446098196907"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.16823066897318517" targetCategory="1">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="1.2871801298085161"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-1.3149996222233147"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="1.9358516654669018"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.3319102850493119"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-3.224528341293867"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="1.3021951271847065"/>
+		</RegressionTable>
+		<RegressionTable intercept="-2.400524250992042" targetCategory="2">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="1.8809709775710302"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-4.828230844320226"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="0.6758697538622874"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="4.2276702884693105"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-0.6624580009585852"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="1.2808731789390024"/>
+		</RegressionTable>
+		<RegressionTable intercept="-1.8996290785839327" targetCategory="3">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="1.9424017799796178"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-3.760145476720564"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="2.918773953762419"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="2.5830748989184236"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-1.0151239487772417"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-0.2139730692685879"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.08211802600097413" targetCategory="4">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="0.5607931644052551"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-1.9207245406964606"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-1.0731380900804997"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="2.949045746160879"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-2.406044874677076"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="5.424874360730748"/>
+		</RegressionTable>
+		<RegressionTable intercept="2.6026935426693436" targetCategory="5">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.42940290695084243"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="1.2353789561864161"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.5486652924607753"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.109563409442541"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-0.00884087450668895"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="0.372016093726486"/>
+		</RegressionTable>
+		<RegressionTable intercept="1.3047260886168597" targetCategory="6">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-1.0549421464117281"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-0.5024377190435891"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-4.472785483624975"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-3.7223791103121795"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-1.0151934993224643"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="3.6349078441378295"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.9432014838611227" targetCategory="7">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-1.3648129729931602"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="2.265356327961851"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-1.2010124946335676"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.48137709461645223"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.9336204063603074"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-1.1323645377103992"/>
+		</RegressionTable>
+		<RegressionTable intercept="1.4909060280211983" targetCategory="8">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.8508850306141922"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="1.9982086342514538"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.36485357894558407"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-1.2660004529582505"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="1.6700254590499988"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-2.6986521772822822"/>
+		</RegressionTable>
+		<RegressionTable intercept="1.7204898244778555" targetCategory="9">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.8426775613206203"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="1.8529736128425707"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.9616328241548815"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.038251965561806156"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="1.2361703624580094"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="0.9321780618391493"/>
+		</RegressionTable>
+		<RegressionTable intercept="2.071934074571277" targetCategory="10">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.6315330827140937"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="1.3839367575686803"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.12150412118376507"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.03048040575821545"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.8477178127796321"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-1.333491178671096"/>
+		</RegressionTable>
+		<RegressionTable intercept="1.5509436959251253" targetCategory="11">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.7360861817419003"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="1.565119729614329"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.2351166828247234"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.9776570828034635"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="1.9719852600400398"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-1.5296379695593267"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.5519830440893375" targetCategory="12">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.8566140038828518"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="2.283748300476678"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.8314755566800118"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-2.070254751432023"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.8894678475112352"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-1.7375542763223233"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.7766119427214571" targetCategory="13">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="0.12354776945494336"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-0.5969162871280265"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-0.19599201809790148"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="2.5020292334955605"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.12724427968603225"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="2.081416361628265"/>
+		</RegressionTable>
+		<RegressionTable intercept="-2.2445967495565005" targetCategory="14">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="1.0094668040512345"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-2.023750322476732"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="1.4347011278007542"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="0.8828928285537172"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.5473906011692629"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-0.27896814406810827"/>
+		</RegressionTable>
+		<RegressionTable intercept="-1.3980195191222358" targetCategory="15">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="1.1411810106377682"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-1.8870178920537215"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="2.713715797797655"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.0904807505610165"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-0.45030594482541775"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-2.7457978222393344"/>
+		</RegressionTable>
+		<RegressionTable intercept="0.5198705835781233" targetCategory="16">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-1.164178856545185"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="2.29641777733458"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="-1.1802218706126646"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-1.0039635983641786"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="1.1406477182235712"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-2.229575086807426"/>
+		</RegressionTable>
+		<RegressionTable intercept="-1.7164652088158985" targetCategory="17">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="1.5997671130338431"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-2.3142963818870106"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="1.2122797796629812"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="2.0414898400360895"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-1.7352998567704527"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="0.3229388429115936"/>
+		</RegressionTable>
+		<RegressionTable intercept="-1.8583979743625587" targetCategory="18">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="0.8393615692322887"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="-0.2497942130194422"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="0.48714574798830407"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-1.1714235897512486"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="-1.0148085858163431"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="0.508985620148637"/>
+		</RegressionTable>
+		<RegressionTable intercept="-1.3440262424837763" targetCategory="19">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-1.1405373874824918"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="1.739941682067073"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="0.08726120265724112"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="-0.7034636524603153"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="1.20762660763109"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="0.36046387705529553"/>
+		</RegressionTable>
+		<RegressionTable intercept="-1.4412231467337813" targetCategory="20">
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[0]" coefficient="-0.46442310390598596"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[1]" coefficient="0.6777848867872929"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[2]" coefficient="0.15810140748078416"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[3]" coefficient="0.9249349736340998"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[4]" coefficient="0.7369811088427741"/>
+			<NumericPredictor name="pca(standardScaler(ACS), standardScaler(KD), .., standardScaler(APR), standardScaler(FKPR))[5]" coefficient="-0.14338900817595424"/>
+		</RegressionTable>
+	</RegressionModel>
 </PMML>

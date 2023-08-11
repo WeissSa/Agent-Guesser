@@ -6,6 +6,7 @@ import pandas as pd
 
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import GaussianNB
+from lazypredict.Supervised import LazyClassifier
 from sklearn.decomposition import PCA
 from sklearn.preprocessing import StandardScaler
 import time
@@ -35,27 +36,16 @@ for index, agent in enumerate(agents):
 
 agents = pd.DataFrame(agents)
 
-X_train, X_test, y_train, y_test = train_test_split(data, agents, test_size=0.2, random_state=10)
+X_train, X_test, y_train, y_test = train_test_split(data, agents, test_size=0.20, random_state=10)
 
 t0= time.time() #to start timer on model training time
 
 
-#using GaussianNB classifier
-pipeline = PMMLPipeline([("sc", StandardScaler()),("pca", PCA()),("classifier", GaussianNB())])
+# generate all models
+clf = LazyClassifier(verbose=0,ignore_warnings=True, custom_metric=None)
+models, predictions = clf.fit(X_train, X_test, y_train, y_test)
 
-model = pipeline.fit(X_train, y_train)
-# model = GaussianNB().fit(X_train, y_train.values.ravel())
+# print all models
+print(models)
 
-test_results = model.predict(X_test)
-accuracy = metrics.accuracy_score(y_test, test_results)
 
-# export pmml
-sklearn2pmml(pipeline, "model.pmml", with_repr=True)
-
-print("accuracy:   %0.2f" % accuracy)
-
-t1 = time.time() - t0 #to calculate model training time
-print(t1, " seconds")
-
-# accuracy is 0.46 with training time of 0.0143
-# with limited fields, and how some agents are bound to have similar stats, I feel this is pretty good

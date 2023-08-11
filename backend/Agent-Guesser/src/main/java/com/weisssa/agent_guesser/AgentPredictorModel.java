@@ -56,7 +56,8 @@ public class AgentPredictorModel {
                     "fade",
                     "reyna",
                     "phoenix",
-                    "harbor"
+                    "harbor",
+                    "gekko"
             };
 
     String intToAgent(int i){

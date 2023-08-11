@@ -48,7 +48,7 @@ function App() {
           Input your Valorant stats and the website will guess what agent you play/main using a categorization algorithm trained using gaussian naive bayes and scikit learn.
         </h2>
         <p className="text-center pt-2 text-sm mx-auto w-1/2">
-          *This model was trained using pro-player data averaged across multiple games. It will work best on stats which are averaged across multiple games from a high level of play. This model was trained before patch 6.04 and thus cannot and will not guess Gekko or any agents added after him.
+          *This model was trained using pro-player data averaged across multiple games. It will work best on stats which are averaged across multiple games from a high level of play. This model was trained during champions 2023 and thus Deadlock is not a possible guess. Furthermore, because Gekko had such small representation, he is not likely to be guessed and thus breach or sova are often guessed instead.
         </p>
         <div className="justify-center flex pt-10 drop-shadow-lg bg-neutral-800 box-border rounded-lg w-full sm:w-[40rem] lg:w-[60rem] px-10  mx-auto my-10 border border-neutral-700  ">
           {renderMainContent()}

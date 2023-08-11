@@ -8,6 +8,10 @@ Initially I tried using the absolute best players (n=~250) as a sample size, but
 1. At least 500 opponent rating
 2. At least 100 rounds played
 
+### Update on this project
+
+Since franchising resulted in less T1 games being played, I was unable to successfully fully update the set. I added the 2023 VCT data (which did not significantly change accuracy levels) in hopes of predicting gekko better. I lowered the threshold of maps for more recent data to add emphasis and increase the gekko representation in the dataset. This resulted in a small accuracy decrease.
+
 ### Main Limitations
 1. Not all agents receive equal play. This means it is harder to correlate data with lesser played agents
 2. A normal player might have very different stats from a pro
@@ -15,7 +19,7 @@ Initially I tried using the absolute best players (n=~250) as a sample size, but
 4. A constantly changing meta means this might not be as accurate on modern data
 
 ### Findings
-I made three different models. The model used in the API is the agent guessing model. This model has an accuracy of ~46%. Considering there are 20 agents and some of those agents are bound to have similar stats, I would characterize this as extremely successul, especially given the restrictions on the size of the data.)
+I made three different models. The model used in the API is the agent guessing model. This model has an accuracy of ~43%. Considering there are 20 agents and some of those agents are bound to have similar stats, I would characterize this as extremely successul, especially given the restrictions on the size of the data.
 
 However, I wondered how accurate it was accounting for agent similarity, so I made 2 other models.
 
@@ -68,3 +72,4 @@ I also want to credit [tkomarlu](https://github.com/tkomarlu) for helping me pla
 
 # A Quick Note on Testing
 I decided not to test this project since each component is very small/simple. If I end up adding to it, I may add testing, but for now I am more concerned with it working as I expect it to.
+
